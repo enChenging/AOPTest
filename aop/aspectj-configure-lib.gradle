@@ -1,0 +1,61 @@
+import org.aspectj.bridge.IMessage
+import org.aspectj.bridge.MessageHandler
+import org.aspectj.tools.ajc.Main
+
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.aspectj:aspectjtools:1.8.13'
+        classpath 'org.aspectj:aspectjweaver:1.8.13'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+android.libraryVariants.all { variant ->
+    if (variant.buildType.isDebuggable()) {
+//        return;   //开放后debug模式不生效
+    }
+    JavaCompile javaCompile = variant.javaCompile
+    javaCompile.doLast {
+        String[] args = ["-showWeaveInfo",
+                         "-1.8",
+                         //aspectj 处理的源文件
+                         "-inpath", javaCompile.destinationDir.toString(),
+                         //aspect 编译器的classpath aspectjtools
+                         "-aspectpath", javaCompile.classpath.asPath,
+                         //输出目录里,aspectj处理完成后的输出目录
+                         "-d", javaCompile.destinationDir.toString(),
+                         //java的类查找路径
+                         "-classpath", javaCompile.classpath.asPath,
+                         //覆盖引导类的位置 android中使用android.jar 而不是jdk
+                         "-bootclasspath", android.bootClasspath.join(
+                File.pathSeparator)]
+
+        MessageHandler handler = new MessageHandler(true)
+        new Main().run(args, handler)
+
+        def log = project.logger
+        for (IMessage message : handler.getMessages(null, true)) {
+            switch (message.getKind()) {
+                case IMessage.ABORT:
+                case IMessage.ERROR:
+                case IMessage.FAIL:
+                    log.error message.message, message.thrown
+                    break
+                case IMessage.WARNING:
+                case IMessage.INFO:
+                    log.info message.message, message.thrown
+                    break
+                case IMessage.DEBUG:
+                    log.debug message.message, message.thrown
+                    break
+            }
+        }
+    }
+}
