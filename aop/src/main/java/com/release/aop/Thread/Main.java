@@ -11,9 +11,9 @@ import java.lang.annotation.Target;
  * @create 2020/8/18
  * @Describe
  */
-//这个注解只在method上用
+//声明注解的作用域  放在什么上面
 @Target(ElementType.METHOD)
-//保留到 作用到class上
+//声明注解的生命周期  就是它的存在周期  源码期 < 编译期 < 运行期
 @Retention(RetentionPolicy.CLASS)
 public @interface Main {
 }
