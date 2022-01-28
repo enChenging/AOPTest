@@ -44,7 +44,9 @@ public class DebugAspectJ {
     @Around("aspectAnalyzeAnnotation()")
     public void analyze(ProceedingJoinPoint joinPoint) throws Throwable {
         Object target = joinPoint.getTarget();
+        //返回带标识的方法
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+        //拿到注解
         Analyze analyze = methodSignature.getMethod().getAnnotation(Analyze.class);
         long startTimeMillis = System.currentTimeMillis();
         joinPoint.proceed();

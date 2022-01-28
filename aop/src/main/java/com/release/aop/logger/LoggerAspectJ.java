@@ -20,7 +20,7 @@ import java.lang.reflect.Method;
 @Aspect
 public class LoggerAspectJ {
 
-    @Around("execution(@com.release.aop.Logger.Logger * *(..))")
+    @Around("execution(@com.release.aop.logger.Logger * *(..))")
     public Object doLoogerMethod(ProceedingJoinPoint joinPoint) throws Throwable {
         /**
          * 执行原始方法 获得耗时

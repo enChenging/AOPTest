@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.release.aop.bindview.Binding;
+import com.release.aop.log.Analyze;
 import com.release.aop.logger.Logger;
 import com.release.aop.login.CheckLogin;
 import com.release.aop.login.Constants;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.vBindViewBtn)
     Button mButton;
 
+    @Analyze(name = "Main")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
     public void printLog(View view) {
         Toast.makeText(this, "打印Log", Toast.LENGTH_SHORT).show();
         sum(6, 6);
+        info();
     }
 
     /**
@@ -103,6 +106,11 @@ public class MainActivity extends AppCompatActivity {
     @Logger(Log.ERROR)
     private int sum(int i, int j) {
         return i + j;
+    }
+
+    @Logger(Log.INFO)
+    private void info(){
+        String a = "123";
     }
 
 }
