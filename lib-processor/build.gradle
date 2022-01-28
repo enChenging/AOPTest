@@ -1,0 +1,14 @@
+plugins {
+    id 'java-library'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_7
+    targetCompatibility = JavaVersion.VERSION_1_7
+}
+
+dependencies {
+    implementation project(':lib-annotations')
+    //优雅的生成代码工具
+    implementation 'com.squareup:javapoet:1.13.0'
+}

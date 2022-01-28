@@ -1,3 +1,5 @@
-include ':aop'
 include ':app'
+include ':aop'
+include ':lib-annotations'
+include ':lib-processor'
 rootProject.name = "AOPTest"

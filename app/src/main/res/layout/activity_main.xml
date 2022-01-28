@@ -1,67 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
     tools:context="com.release.aoptest.MainActivity">
 
     <Button
-        android:onClick="readFile"
+        android:id="@+id/vBindViewBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="读文件"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="50dp"
-        />
+        android:layout_marginTop="20dp"
+        android:onClick="bindView"
+        android:text="BindView"
+        android:textAllCaps="false" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:onClick="readFile"
+        android:text="读文件" />
 
     <Button
         android:id="@+id/btn_writeFile"
-        android:onClick="writeFile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="写文件"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="150dp"
-        />
+        android:layout_marginTop="20dp"
+        android:onClick="writeFile"
+        android:text="写文件" />
 
     <Button
         android:id="@+id/btn_printLog"
-        android:onClick="printLog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:onClick="printLog"
         android:text="打印Log"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_writeFile"
-        android:layout_marginTop="50dp"
-        />
+        android:textAllCaps="false" />
 
     <Button
         android:id="@+id/btn_login"
-        android:onClick="login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="登录"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_printLog"
-        android:layout_marginTop="50dp"
-        />
+        android:layout_marginTop="20dp"
+        android:onClick="login"
+        android:text="登录" />
 
     <Button
-        android:onClick="requestPermission"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="请求权限"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_login"
-        android:layout_marginTop="50dp"
-        />
+        android:layout_marginTop="20dp"
+        android:onClick="requestPermission"
+        android:text="请求权限" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>
